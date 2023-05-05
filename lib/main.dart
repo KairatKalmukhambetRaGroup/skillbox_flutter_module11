@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'details.dart';
 import 'spaces.dart';
 
 void main() {
@@ -84,34 +85,23 @@ class _MyHomePageState extends State<MyHomePage> {
                                     Positioned(
                                       bottom: -20,
                                       right: 20,
-                                      child: Hero(
-                                        tag: '${space.id}-button',
-                                        child: Material(
-                                          child: Container(
-                                            padding: const EdgeInsets.all(8),
-                                            color: Colors.yellow,
-                                            child: const Icon(
-                                              Icons.add,
-                                              weight: 100,
-                                            ),
-                                          ),
+                                      child: Container(
+                                        padding: const EdgeInsets.all(8),
+                                        color: Colors.yellow,
+                                        child: const Icon(
+                                          Icons.add,
+                                          weight: 100,
                                         ),
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
-                              Hero(
-                                tag: '${space.id}-title',
-                                child: Material(
-                                  color: Colors.transparent,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8),
-                                    child: Text(
-                                      space.description,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
+                              Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Text(
+                                  space.description,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ),
                             ],
@@ -122,69 +112,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 .toList(),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class Details extends StatelessWidget {
-  const Details({super.key, required this.data});
-  final Space data;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.white),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Hero(
-                  tag: data.id,
-                  child: Image.asset(
-                    data.image,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Positioned(
-                  bottom: -20,
-                  right: 20,
-                  child: Hero(
-                    tag: '${data.id}-button',
-                    child: Material(
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        color: Colors.yellow,
-                        child: const Icon(
-                          Icons.add,
-                          weight: 100,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Hero(
-            tag: '${data.id}-title',
-            child: Material(
-              child: Container(
-                clipBehavior: Clip.none,
-                padding: const EdgeInsets.all(8),
-                // color: Colors.grey,
-                width: double.infinity,
-                child: Text(data.description),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
